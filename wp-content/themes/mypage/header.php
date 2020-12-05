@@ -63,10 +63,3 @@
 
     </header><!-- /.globalHeader -->
 
-    <div class="fixed-bg">
-        <?php if( is_home() ): ?>
-        <video autoplay loop muted width=100% height="750">
-            <source src="<?php echo get_template_directory_uri(); ?>/images/home/top_video.mp4">
-        </video>
-        <?php endif; ?>
-    </div>
