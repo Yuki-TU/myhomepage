@@ -4,42 +4,40 @@
     <div class="mainContents">
         <div class="contentBlock block">
             <div class="banners">
-                <div id="wether">
-                    <label style="font-size: 30px">{{ wether }}</label>
-                    <img v-bind:src='wether_image'></img>
-                    <a id="test" href="https://www.jma.go.jp/jp/yoho/" :target="is_running ? '_blank' : null">詳しい天気予報へ</a>
-                </div>
-                <div id="contentList" v-cloak>
-                    {{ message }}
-                </div>
-                <div id="app">
-                    <div class="form-group row justify-content-center">
-                        <label class="col-sm-2 col-form-label">Area</label>
-                        <div class="col-sm-4">
-                            <select class="form-control" v-model="selected_area" v-on:change="_set_area">
-                                <option value="">エリアを選択</option>
-                                <option v-for="(area, index) in areas" v-bind:value="index">{{area}}</option>
-                            </select>
+                <div id="weather">
+                    
+                    <div id="select_place">
+                        <div id="message" v-cloak>
+                            {{ message }}
                         </div>
-                    </div>
-                    <div class="form-group row justify-content-center" v-if="selected_prefs.length > 0">
-                        <label class="col-sm-2 col-form-label">Prefecture</label>
-                        <div class="col-sm-4">
-                            <select class="form-control" v-model="selected_pref">
-                                <option value="">都道府県を選択</option>
-                                <option v-for="(prefs, index) in selected_prefs">{{prefs}}</option>
-                            </select>
+                        <div class="form-group row justify-content-center">
+                            <label class="col-sm-2 col-form-label">Area</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" v-model="selected_area" v-on:change="_set_area">
+                                    <option value="" disabled>エリアを選択</option>
+                                    <option v-for="(area, index) in areas" v-bind:value="index">{{area}}</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </div>
                 <h2>コンテンツ一覧</h2>
                 <div id="img_unit">
                     <div class="Photo" v-for="Photo in Photos">
                         <img :src="Photo.path">
                         <div class="inner">
                             <p>{{Photo.caption}}<span>{{Photo.name}}</span></p>
+                        <div class="form-group row justify-content-center" v-if="selected_prefs.length > 0">
+                            <label class="col-sm-2 col-form-label">Prefecture</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" v-model="selected_pref" v-on:change="_set_pref">
+                                    <option value="">都道府県を選択</option>
+                                    <option v-for="(prefs, index) in selected_prefs">{{prefs}}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+                    <label style="font-size: 30px">{{ weather }}</label>
+                    <img v-bind:src='weather_image' v-show="select_place" height="70" width=auto alt="天気予報"></img>
+                    <a v-show="select_place" href="https://www.jma.go.jp/jp/yoho/">詳しい天気予報へ</a>
                 </div>
                 <ul>
                     <div class="imgWrapTop">
@@ -91,59 +89,17 @@ var data = [{
 ]
 
 new Vue({
-    el: '#wether',
+    el: '#weather',
     data: {
-        wether: "Today's weather forecast",
-        wether_info: {},
-        //wether_image: this.wether_info.data.forecasts[0].image.url
-        wether_image: null,
-    },
-    mounted: function() {
-        var self = this;
-        axios
-        .get('https://weather.tsukumijima.net/api/forecast?city=400040')
-        .then(response => {
-            this.wether_info = response;
-            this.wether_image = this.wether_info.data.forecasts[0].image.url;
-            console.log(this.wether_info)
-        })
-    },
-})
-new Vue({
-    el: '#test',
-    data: {
-        is_run: true,
-    },
-    computed: {
-        is_running: function() {
-            return false;
-        }
-    }
-})
-new Vue({
-    el: '#contentList',
-    data: {
-        message: 'コンテンツ一覧'
-    }
-});
-
-new Vue({
-    el: '#img_unit',
-    data: {
-        Photos: []
-    },
-    created: function() {
-        var self = this;
-        self.Photos = data;
-    }
-});
-
-new Vue({
-    el: '#app',
-    data: {
+        weather: "Today's weather forecast",
+        weather_info: {},
+        weather_image: null,
+        weather_url: "",
         selected_area: "",
         selected_pref: "",
         selected_prefs: [],
+        message: "場所の選択してください。",
+        select_place: false,
         areas: [
             "北海道・東北",
             "関東",
@@ -212,14 +168,93 @@ new Vue({
                 "鹿児島県",
                 "沖縄県"
             ]
+        ],
+        weather_code: [
+            {
+                "北海道": "016010",
+                "青森県": "020010",
+                "岩手県": "030010",
+                "宮城県": "040010",
+                "秋田県": "050010",
+                "山形県": "060010",
+                "福島県": "070010",
+            },
+            {
+                "茨城県": "080010",
+                "栃木県": "090010",
+                "群馬県": "100010",
+                "埼玉県": "110010",
+                "東京都": "130010",
+                "千葉県": "120010",
+                "神奈川県": "140010",
+            },
+            {
+                "新潟県": "150010",
+                "長野県": "200010",
+                "山梨県": "190010",
+                "富山県": "160010",
+                "石川県": "170010",
+                "福井県": "180010",
+                "岐阜県": "210010",
+                "静岡県": "220010",
+                "愛知県": "230010",
+            },
+            {
+                "滋賀県": "250010",
+                "京都府": "260010",
+                "大阪府": "270000",
+                "奈良県": "290010",
+                "兵庫県": "280010",
+                "和歌山県": "300010",
+                "三重県": "240010",
+            },
+            {
+                "鳥取県": "310010",
+                "島根県": "320010",
+                "岡山県": "330010",
+                "広島県": "340010",
+                "山口県": "350020",
+                "徳島県": "360010",
+                "香川県": "370000",
+                "愛媛県": "380010",
+                "高知県": "390010",
+            },
+            {
+                "福岡県": "400010",
+                "佐賀県": "410010",
+                "長崎県": "420010",
+                "熊本県": "430010",
+                "大分県": "440010",
+                "宮崎県": "450010",
+                "鹿児島県": "460010",
+                "沖縄県": "471010",
+            }
         ]
     },
     methods: {
         _set_area: function() {
-            this.selected_pref = "";
             this.selected_prefs = this.pref[this.selected_area];
+        },
+        _set_pref: function() {
+            if(this.selected_pref!="") {
+                this.select_place = true;
+                this.weather_url = 'https://weather.tsukumijima.net/api/forecast?city='+this.weather_code[this.selected_area][this.selected_pref];
+                this.get_weather_info();
+            } else {
+                this.select_place = false;
+            }
+        },
+        get_weather_info: function() {
+            var self = this;
+            axios
+            .get(self.weather_url)
+            .then(response => {
+                self.weather_info = response;
+                self.weather_image = self.weather_info.data.forecasts[0].image.url;
+            })
         }
     }
+})
 });
 </script>
 
