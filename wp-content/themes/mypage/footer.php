@@ -33,10 +33,10 @@
             <p class="description"><?php bloginfo('description'); ?></p> 
             
             <dl class="address">
-                <dt>株式会社LisB</dt>
+                <dt>Yuki's</dt>
             </dl><!-- /.address -->
 
-            <small>&copy; L is B Corp.</small>
+            <small>&copy; Yuki's</small>
         </div>
     </footer><!-- /.globalFooter -->
 
