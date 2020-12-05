@@ -4,9 +4,8 @@
     <div class="mainContents">
         <div class="contentBlock block">
             <div class="banners">
-                <div id="weather">
-                    
-                    <div id="select_place">
+                <div id="weather"> 
+                    <div id="selected_place">
                         <div id="message" v-cloak>
                             {{ message }}
                         </div>
@@ -16,10 +15,9 @@
                                 <select class="form-control" v-model="selected_area" v-on:change="_set_area">
                                     <option value="" disabled>エリアを選択</option>
                                     <option v-for="(area, index) in areas" v-bind:value="index">{{area}}</option>
-                                </select>
+                                </select>                                
                             </div>
                         </div>
-                <h2>コンテンツ一覧</h2>
                         <div class="form-group row justify-content-center" v-if="selected_prefs.length > 0">
                             <label class="col-sm-2 col-form-label">Prefecture</label>
                             <div class="col-sm-4">
@@ -29,11 +27,13 @@
                                 </select>
                             </div>
                         </div>
+                        <label style="font-size: 30px">{{ weather }}</label>
+                        <img v-bind:src='weather_image' v-show="selected_place" height="70" width=auto alt="天気予報"></img>
+                        <a v-show="selected_place" href="https://www.jma.go.jp/jp/yoho/">詳しい天気予報へ</a>
                     </div>
-                    <label style="font-size: 30px">{{ weather }}</label>
-                    <img v-bind:src='weather_image' v-show="select_place" height="70" width=auto alt="天気予報"></img>
-                    <a v-show="select_place" href="https://www.jma.go.jp/jp/yoho/">詳しい天気予報へ</a>
                 </div>
+                        
+                <h2>コンテンツ一覧</h2>
                 <ul>
                     <div class="imgWrapTop">
                         <div class="imgWrapRec">
@@ -51,10 +51,9 @@
                                         src="<?php echo get_template_directory_uri(); ?>/images/home/message.png"
                                         height="333" width="782" alt="採用メッセージ"></a></li>
                         </div>
-                    </div>
-                    <!--.imgWrapTop-->
+                    </div><!--.imgWrapTop-->
                 </ul>
-            </div>
+            </div><!-- /.banners -->
         </div><!-- /.contentBlock -->
     </div><!-- /.mainContents -->
 </div><!-- /.contentsWrap -->
@@ -71,7 +70,7 @@ new Vue({
         selected_pref: "",
         selected_prefs: [],
         message: "場所の選択してください。",
-        select_place: false,
+        selected_place: false,
         areas: [
             "北海道・東北",
             "関東",
@@ -209,11 +208,11 @@ new Vue({
         },
         _set_pref: function() {
             if(this.selected_pref!="") {
-                this.select_place = true;
+                this.selected_place = true;
                 this.weather_url = 'https://weather.tsukumijima.net/api/forecast?city='+this.weather_code[this.selected_area][this.selected_pref];
                 this.get_weather_info();
             } else {
-                this.select_place = false;
+                this.selected_place = false;
             }
         },
         get_weather_info: function() {
@@ -227,7 +226,6 @@ new Vue({
         }
     }
 })
-});
 </script>
 
 <?php get_footer(); ?>
