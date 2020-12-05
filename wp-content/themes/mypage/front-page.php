@@ -20,11 +20,6 @@
                             </div>
                         </div>
                 <h2>コンテンツ一覧</h2>
-                <div id="img_unit">
-                    <div class="Photo" v-for="Photo in Photos">
-                        <img :src="Photo.path">
-                        <div class="inner">
-                            <p>{{Photo.caption}}<span>{{Photo.name}}</span></p>
                         <div class="form-group row justify-content-center" v-if="selected_prefs.length > 0">
                             <label class="col-sm-2 col-form-label">Prefecture</label>
                             <div class="col-sm-4">
@@ -65,29 +60,6 @@
 </div><!-- /.contentsWrap -->
 
 <script>
-var data = [{
-        "path": "http://localhost:8000/wp-content/themes/mypage/img/img01.jpg",
-        "name": "sansaisan",
-        "caption": "こっちは貫禄ありすぎ",
-        "date": "sansaisan",
-        "memo": "こっちは貫禄ありすぎ"
-    },
-    {
-        "path": "http://localhost:8000/wp-content/themes/mypage/img/img02.jpg",
-        "name": "yukky_13dream",
-        "caption": "年明け富士山",
-        "date": "yukky_13dream",
-        "memo": "年明け富士山"
-    },
-    {
-        "path": "http://localhost:8000/wp-content/themes/mypage/img/img03.png",
-        "name": "maako",
-        "caption": "空と大地の境界線って、どのあたり？",
-        "date": "maako",
-        "memo": "空と大地の境界線って、どのあたり？"
-    }
-]
-
 new Vue({
     el: '#weather',
     data: {
