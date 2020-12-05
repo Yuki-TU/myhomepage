@@ -45,18 +45,18 @@
                     <div class="imgWrapTop">
                         <div class="imgWrapRec">
                             <li style="float: right;"><a href="<?php echo get_permalink(26); ?>"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/home/appList.png"
-                                        height="288" width="720" alt="募集要項"></a></li>
+                                        src="<?php echo get_template_directory_uri(); ?>/images/home/introduction.png"
+                                        height="288" width="720" alt="introduction"></a></li>
                         </div>
                         <div class="imgWrapInt">
                             <li><a href="<?php echo get_permalink(104); ?>"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/home/interview.png"
-                                        height="303" width="994" alt="社員インタビュー"></a></li>
+                                        src="<?php echo get_template_directory_uri(); ?>/images/home/hobby.png"
+                                        height="303" width="994" alt="hobby"></a></li>
                         </div>
                         <div class="imgWrapMes">
                             <li style="float: left;"><a href="<?php echo get_permalink(104); ?>"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/home/message.png"
-                                        height="333" width="782" alt="採用メッセージ"></a></li>
+                                        src="<?php echo get_template_directory_uri(); ?>/images/home/country.png"
+                                        height="333" width="782" alt="country"></a></li>
                         </div>
                     </div><!--.imgWrapTop-->
                 </ul>

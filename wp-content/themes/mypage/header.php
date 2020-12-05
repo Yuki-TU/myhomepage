@@ -39,9 +39,10 @@
 <body class="home">
     <header class="globalHeader">
         <div class="inner">
-            <h1><a href="<?php echo home_url(); ?>"><img
-                        src="<?php echo get_template_directory_uri(); ?>/images/common/logo_lisb.svg" height="60"
-                        width="65" alt="LisB"></a></h1>
+            <h1><a href="<?php echo home_url(); ?>">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/common/logo.png" height="50" width=auto alt="Yuki's">
+                </a>
+            </h1>
 
             <p class="description"><?php bloginfo('description'); ?></p>
 
