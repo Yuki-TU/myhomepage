@@ -38,8 +38,9 @@
                         <img v-bind:src='weather_image' v-show="selected_place" height="70" width=auto alt="天気予報"></img>
                         <a v-show="selected_place" href="https://www.jma.go.jp/jp/yoho/">詳しい天気予報へ</a>
                     </div>
+                    <canvas id="weatherChart" v-show="selected_place" v-cloak></canvas>
+                    <div v-show="no_temperature_data" style="font-size: 30px" v-cloak>{{alert_no_data}}</div>
                 </div>
-                        
                 <h2>コンテンツ一覧</h2>
                 <ul>
                     <div class="imgWrapTop">
@@ -66,6 +67,8 @@
 </div><!-- /.contentsWrap -->
 
 <script>
+
+
 new Vue({
     el: '#weather',
     data: {
@@ -78,6 +81,8 @@ new Vue({
         selected_prefs: [],
         message: "場所の選択してください。",
         selected_place: false,
+        alert_no_data: "温度のデータを取得できませんでした。",
+        no_temperature_data: false,
         areas: [
             "北海道・東北",
             "関東",
@@ -207,7 +212,7 @@ new Vue({
                 "鹿児島県": "460010",
                 "沖縄県": "471010",
             }
-        ]
+        ],
     },
     methods: {
         _set_area: function() {
@@ -218,8 +223,10 @@ new Vue({
                 this.selected_place = true;
                 this.weather_url = 'https://weather.tsukumijima.net/api/forecast?city='+this.weather_code[this.selected_area][this.selected_pref];
                 this.get_weather_info();
+                
             } else {
                 this.selected_place = false;
+                this.no_temperature_data = false;
             }
         },
         get_weather_info: function() {
@@ -229,7 +236,61 @@ new Vue({
             .then(response => {
                 self.weather_info = response;
                 self.weather_image = self.weather_info.data.forecasts[0].image.url;
+                if(self.existing_temperature_value(self.weather_info)) {
+                    self.draw_weather_chart(response);
+                } else {
+                    self.no_temperature_data = true;
+                }
+                
             })
+        },
+        draw_weather_chart: function(weather_info) {
+            new Chart(document.getElementById("weatherChart"), {
+                type: 'line',
+                data: {
+                    labels: [weather_info.data.forecasts[0].date, weather_info.data.forecasts[1].date, weather_info.data.forecasts[2].date],
+                    datasets: [
+                    {
+                        label: '最高気温(度）',
+                        data: [weather_info.data.forecasts[0].temperature.max.celsius, weather_info.data.forecasts[1].temperature.max.celsius, weather_info.data.forecasts[2].temperature.max.celsius],
+                        borderColor: "rgba(255,0,0,1)",
+                        backgroundColor: "rgba(0,0,0,0)"
+                    },
+                    {
+                        label: '最低気温(度）',
+                        data: [weather_info.data.forecasts[0].temperature.min.celsius, weather_info.data.forecasts[1].temperature.min.celsius, weather_info.data.forecasts[2].temperature.min.celsius],
+                        borderColor: "rgba(0,0,255,1)",
+                        backgroundColor: "rgba(0,0,0,0)"
+                    }
+                    ],
+                },
+                options: {
+                    title: {
+                    display: true,
+                    text: weather_info.data.forecasts[0].date,
+                    },
+                    scales: {
+                    yAxes: [{
+                        ticks: {
+                        suggestedMax: 40,
+                        suggestedMin: 0,
+                        stepSize: 10,
+                        callback: function(value, index, values){
+                            return  value +  '度'
+                        }
+                        }
+                    }]
+                    },
+                }
+            });
+        },
+        existing_temperature_value: function(weather_info) {
+            return weather_info.data.forecasts[0].temperature.min != null &&
+                weather_info.data.forecasts[1].temperature.min != null &&
+                weather_info.data.forecasts[2].temperature.min != null &&
+                weather_info.data.forecasts[0].temperature.max != null &&
+                weather_info.data.forecasts[1].temperature.max != null &&
+                weather_info.data.forecasts[2].temperature.max != null;
         }
     }
 })
