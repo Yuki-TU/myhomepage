@@ -1,0 +1,93 @@
+@import url(custStyles.css);
+.contentsWrap .mainContents .banners #weather-message {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.contentsWrap .mainContents .banners #weather-message:after {
+    border-top: 1px solid;
+    content: "";
+    flex-grow: 1;
+    margin-left: 1rem;
+}
+
+
+/* 場所を選択するプルダウン */
+
+.contentsWrap .mainContents .banners .form-group {
+    position: relative;
+    width: 90%;
+    margin: 2em auto;
+    text-align: center;
+}
+
+.contentsWrap .mainContents .banners .form-control {
+    position: relative;
+    font-family: inherit;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px 10px 10px 0;
+    font-size: 18px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.contentsWrap .mainContents .banners .form-control:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+
+.contentsWrap .mainContents .banners .form-group .form-control {
+    appearance: none;
+    -webkit-appearance: none
+}
+
+.contentsWrap .mainContents .banners .form-group select::-ms-expand {
+    display: none;
+}
+
+.contentsWrap .mainContents .banners .form-group:after {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.cp_sl06_selectlabel {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 10px;
+    transition: 0.2s ease all;
+}
+
+.contentsWrap .mainContents .banners .select-label {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 10px;
+    transition: 0.2s ease all;
+}
+
+.contentsWrap .mainContents .banners .form-control:focus~.contentsWrap .mainContents .banners .select-label,
+.contentsWrap .mainContents .banners .form-control:valid~.contentsWrap .mainContents .banners .select-label {
+    color: #da3c41;
+    top: -20px;
+    transition: 0.2s ease all;
+    font-size: 14px;
+}

@@ -12,20 +12,21 @@
             </div>
             <div class="banners">
                 <div id="weather"> 
+                    <label id="weather-message">{{ weather }}</label>
                     <div id="selected_place">
                         <div id="message" v-cloak>
                             {{ message }}
                         </div>
-                        <div class="form-group row justify-content-center">
+                        <div class="form-group">
                             <label class="col-sm-2 col-form-label">Area</label>
                             <div class="col-sm-4">
                                 <select class="form-control" v-model="selected_area" v-on:change="_set_area">
-                                    <option value="" disabled>エリアを選択</option>
+                                    <option class="select-label" value="" disabled>エリアを選択</option>
                                     <option v-for="(area, index) in areas" v-bind:value="index">{{area}}</option>
-                                </select>                                
+                                </select>                               
                             </div>
                         </div>
-                        <div class="form-group row justify-content-center" v-if="selected_prefs.length > 0">
+                        <div class="form-group" v-if="selected_prefs.length > 0">
                             <label class="col-sm-2 col-form-label">Prefecture</label>
                             <div class="col-sm-4">
                                 <select class="form-control" v-model="selected_pref" v-on:change="_set_pref">
@@ -34,7 +35,6 @@
                                 </select>
                             </div>
                         </div>
-                        <label style="font-size: 30px">{{ weather }}</label>
                         <img v-bind:src='weather_image' v-show="selected_place" height="70" width=auto alt="天気予報"></img>
                         <a v-show="selected_place" href="https://www.jma.go.jp/jp/yoho/">詳しい天気予報へ</a>
                     </div>
@@ -72,7 +72,7 @@
 new Vue({
     el: '#weather',
     data: {
-        weather: "Today's weather forecast",
+        weather: "今日の天気",
         weather_info: {},
         weather_image: null,
         weather_url: "",
