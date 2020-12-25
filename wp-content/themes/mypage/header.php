@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/custStyles.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/myStyles.css" type="text/css" />
     <!--[if lt IE 9]>
     <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script src="https://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
