@@ -45,10 +45,6 @@
 
             <p class="description"><?php bloginfo('description'); ?></p>
 
-            <form action="" method="get" class="searchform">
-                <input type="text" value="" name="s" id="s" placeholder="サイト内検索">
-                <input type="submit" id="searchSubmit" value="">
-            </form>
 
             <nav class="globalNaviTop">
                 <?php
@@ -59,6 +55,7 @@
                 wp_nav_menu($args);
                 ?>
             </nav><!-- /.globalNaviTop -->
+            <?php get_search_form(); ?>
         </div>
 
     </header><!-- /.globalHeader -->
