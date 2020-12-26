@@ -1004,16 +1004,6 @@ table.type-A tbody th {
     width: 1000px;
 }
 
-.home video {
-    background-attachment: fixed;
-    margin: auto;
-}
-
-.home .fixed-bg {
-    background-attachment: fixed;
-    margin: auto;
-}
-
 article.content {
     *zoom: 1;
     padding: 25px 0;
