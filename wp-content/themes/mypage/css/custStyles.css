@@ -920,30 +920,6 @@ table.type-A tbody th {
     text-align: center;
 }
 
-
-/*中央に揃える*/
-
-.banners h2 {
-    /*topページのコンテンツ一覧の文字の変更*/
-    widows: 100%;
-    font-size: 40px;
-    border-top: 5px solid #0a0000;
-    border-bottom: 5px solid #0a0000;
-}
-
-
-/*コンテンツの中身*/
-
-.contentsWrap {
-    width: 80%;
-    padding: 0px 0px 0px 0px;
-    margin-top: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    *zoom: 1;
-    margin: 5px auto;
-}
-
 .contentsWrap:before,
 .contentsWrap:after {
     display: table;

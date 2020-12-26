@@ -42,7 +42,7 @@
                     <canvas id="weatherChart" v-show="selected_place" v-cloak></canvas>
                     <div v-show="no_temperature_data" style="font-size: 30px" v-cloak>{{alert_no_data}}</div>
                 </div>
-                <h2>コンテンツ一覧</h2>
+                <label id="content-label">コンテンツ一覧</label>
                 <ul>
                     <div class="imgWrapTop">
                         <div class="imgWrapRec">

@@ -35,13 +35,39 @@
 }
 
 
+/* 天気予報 */
+
 .contentsWrap .mainContents .banners #weather-message {
-    font-size: 30px;
+    font-size: 40px;
+    font-family: 'Mv Boli', cursive;
     display: flex;
     align-items: center;
+    margin-top: 80px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .contentsWrap .mainContents .banners #weather-message:after {
+    border-top: 1px solid;
+    content: "";
+    flex-grow: 1;
+    margin-left: 1rem;
+}
+
+
+/* コンテンツ一覧 */
+
+.contentsWrap .mainContents .banners #content-label {
+    font-size: 40px;
+    font-family: 'Mv Boli', cursive;
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.contentsWrap .mainContents .banners #content-label:after {
     border-top: 1px solid;
     content: "";
     flex-grow: 1;
