@@ -50,6 +50,12 @@
     color: black;
 }
 
+.contents-display {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+
 /* top ムービー */
 
 .top-move {
