@@ -48,17 +48,17 @@
                         <div class="imgWrapRec">
                             <li style="float: right;"><a href="<?php echo home_url('/introduction'); ?>"><img
                                         src="<?php echo get_template_directory_uri(); ?>/images/home/introduction.png"
-                                        height="288" width="720" alt="introduction"></a></li>
+                                        alt="introduction"></a></li>
                         </div>
                         <div class="imgWrapInt">
                             <li><a href="<?php echo home_url('/hobby'); ?>"><img
                                         src="<?php echo get_template_directory_uri(); ?>/images/home/hobby.png"
-                                        height="303" width="994" alt="hobby"></a></li>
+                                        alt="hobby"></a></li>
                         </div>
                         <div class="imgWrapMes">
                             <li style="float: left;"><a href="<?php echo home_url('/country'); ?>"><img
                                         src="<?php echo get_template_directory_uri(); ?>/images/home/country.png"
-                                        height="333" width="782" alt="country"></a></li>
+                                        alt="country"></a></li>
                         </div>
                     </div><!--.imgWrapTop-->
                 </ul>

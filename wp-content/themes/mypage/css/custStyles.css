@@ -944,34 +944,36 @@ table.type-A tbody th {
 /*画像のホバーのやつ*/
 
 .contentsWrap .mainContents .imgWrapTop .imgWrapRec {
+    float: center;
     margin: auto;
     background: #000;
-    width: 720px;
-    /*画像の幅*/
-    height: 288px;
-    /*画像の高さ*/
+    width: 1121px;
+    height: 370px;
     overflow: hidden;
 }
 
 .contentsWrap .mainContents .imgWrapTop .imgWrapInt {
-    float: right;
+    float: left;
+    left: 100px;
+    margin: auto;
     background: #000;
-    width: 994px;
-    /*画像の幅*/
-    height: 303px;
-    /*画像の高さ*/
+    width: 769px;
+    height: 287px;
     overflow: hidden;
+    margin-left: 10vh;
+    margin-right: 10vh;
 }
 
 .contentsWrap .mainContents .imgWrapTop .imgWrapMes {
-    float: left;
+    float: right;
+    right: 200px;
     margin: auto;
     background: #000;
-    width: 782px;
-    /*画像の幅*/
-    height: 333px;
-    /*画像の高さ*/
+    width: 1386px;
+    height: 360px;
     overflow: hidden;
+    margin-left: 10vh;
+    margin-right: 10vh;
 }
 
 .contentsWrap .mainContents .imgWrapTop img {
