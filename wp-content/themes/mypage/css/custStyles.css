@@ -783,7 +783,8 @@ table.type-A tbody th {
 }
 
 .globalNaviTop ul li a {
-    font-size: 12px;
+    font-size: 15px;
+    font-family: 'Mv Boli', cursive;
     color: #333;
     text-decoration: none;
     padding: 22px 0px;
@@ -794,6 +795,19 @@ table.type-A tbody th {
 
 .globalNaviTop ul li a:hover {
     background-color: rgba(255, 255, 255, 0.8);
+    color: #ff7600;
+    position: relative;
+}
+
+.globalNaviTop a:hover span::after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 4px;
+    width: 100%;
+    bottom: 0;
+    background-color: #ff7600;
+    border-radius: 5px;
 }
 
 .globalFooter .pageTop {
