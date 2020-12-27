@@ -1,4 +1,11 @@
 @import url(custStyles.css);
+.chart-temp {
+    padding-right: 20vh;
+    padding-left: 20vh;
+    height: 30%;
+    width: 70%;
+}
+
 
 /* 固定ページのヘッダー固定 */
 

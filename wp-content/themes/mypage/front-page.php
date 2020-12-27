@@ -39,7 +39,7 @@
                         <img v-bind:src='weather_image' v-show="selected_place" height="70" width=auto alt="天気予報"></img>
                         <a v-show="selected_place" href="https://www.jma.go.jp/jp/yoho/">詳しい天気予報へ</a>
                     </div>
-                    <canvas id="weatherChart" v-show="selected_place" v-cloak></canvas>
+                    <canvas class="chart-temp" id="weatherChart" v-show="selected_place" v-cloak></canvas>
                     <div v-show="no_temperature_data" style="font-size: 30px" v-cloak>{{alert_no_data}}</div>
                 </div>
                 <label id="content-label">コンテンツ一覧</label>
@@ -267,21 +267,31 @@ new Vue({
                 },
                 options: {
                     title: {
-                    display: true,
-                    text: weather_info.data.forecasts[0].date,
+                        display: true,
+                        text: "ここ3日間の最小・最高気温の推移",
+                        fontSize: 28,
                     },
                     scales: {
-                    yAxes: [{
-                        ticks: {
-                        suggestedMax: 40,
-                        suggestedMin: 0,
-                        stepSize: 10,
-                        callback: function(value, index, values){
-                            return  value +  '度'
-                        }
-                        }
-                    }]
+                        yAxes: [{
+                            ticks: {
+                                fontSize: 28,
+                                stepSize: 10,
+                                callback: function(value, index, values){
+                                    return  value +  '度'
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 28
+                            }
+                        }]
                     },
+                    legend: {
+                        labels: {
+                            fontSize: 28,
+                        }
+                    }
                 }
             });
         },
