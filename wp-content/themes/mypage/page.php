@@ -1,5 +1,14 @@
 <?php get_header(); ?>
     <div class="contentsWrap">
+    <?php if (is_page('introduction')): ?>
+        <div id="fixed-header-intro" class="dark-filter"></div>
+    <?php endif; ?>
+    <?php if (is_page('hobby')): ?>
+        <div id="fixed-header-hobby"></div>
+    <?php endif; ?>
+    <?php if (is_page('country')): ?>
+        <div id="fixed-header-country"></div>
+    <?php endif; ?>
         <?php if(!is_home()): ?>
             <div class="breadcrumbs">
                 <?php

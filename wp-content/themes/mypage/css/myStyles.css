@@ -1,5 +1,55 @@
 @import url(custStyles.css);
 
+/* 固定ページのヘッダー固定 */
+
+#fixed-header-intro {
+    background-image: url('../images/home/introduction.png ');
+    background-attachment: fixed;
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 100%;
+    color: black;
+}
+
+#fixed-header-hobby {
+    background-image: url('../images/home/hobby.png ');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 100%;
+    color: black;
+}
+
+#fixed-header-country {
+    background-image: url('../images/home/country.png ');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 100%;
+    color: black;
+}
+
 /* top ムービー */
 
 .top-move {
