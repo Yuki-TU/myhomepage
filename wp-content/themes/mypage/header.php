@@ -42,21 +42,18 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/images/common/logo.png" height="50" width=auto alt="Yuki's">
                 </a>
             </h1>
-
             <p class="description"><?php bloginfo('description'); ?></p>
-
-
-            <nav class="globalNaviTop">
-                <?php
-                $args = array(
-                    'menu'=>'global-navigationTop',
-                    'container'=>false,
-                );
-                wp_nav_menu($args);
-                ?>
-            </nav><!-- /.globalNaviTop -->
             <?php get_search_form(); ?>
         </div>
-
     </header><!-- /.globalHeader -->
+
+    <nav class="globalNaviTop">
+        <?php
+        $args = array(
+            'menu'=>'global-navigationTop',
+            'container'=>false,
+        );
+        wp_nav_menu($args);
+        ?>
+    </nav><!-- /.globalNaviTop -->
 
