@@ -36,6 +36,7 @@
                                 </select>
                             </div>
                         </div>
+                        <p class="weather-city" v-cloak>{{ city }}は</p>
                         <img v-bind:src='weather_image' v-show="selected_place" height="70" width=auto alt="天気予報"></img>
                         <a v-show="selected_place" href="https://www.jma.go.jp/jp/yoho/">詳しい天気予報へ</a>
                     </div>
@@ -84,6 +85,7 @@ new Vue({
         selected_place: false,
         alert_no_data: "温度のデータを取得できませんでした。",
         no_temperature_data: false,
+        city: "",
         areas: [
             "北海道・東北",
             "関東",
@@ -237,6 +239,7 @@ new Vue({
             .then(response => {
                 self.weather_info = response;
                 self.weather_image = self.weather_info.data.forecasts[0].image.url;
+                self.city = self.weather_info.data.title;
                 if(self.existing_temperature_value(self.weather_info)) {
                     self.draw_weather_chart(response);
                 } else {

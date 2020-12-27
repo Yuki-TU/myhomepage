@@ -1,7 +1,13 @@
 @import url(custStyles.css);
+.weather-city {
+    font-size: 28px;
+    font-family: 'Mv Boli', cursive;
+}
+
 .chart-temp {
     padding-right: 20vh;
     padding-left: 20vh;
+    padding-top: 100px;
     height: 30%;
     width: 70%;
 }
