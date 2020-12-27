@@ -620,13 +620,15 @@ table.type-A tbody th {
 }
 
 .globalHeader p.description {
+    font-family: 'Mv Boli', cursive;
     float: left;
-    width: 100px;
+    font-weight: bold;
+    width: 150px;
     font-size: 80px;
-    font-size: 1.2rem;
+    font-size: 2.8rem;
     color: rgb(95, 95, 95);
     margin-left: 20px;
-    margin-top: 35px;
+    margin-top: 30px;
     margin-bottom: 0;
 }
 
